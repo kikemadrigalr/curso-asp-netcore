@@ -296,7 +296,5 @@ obj/
 
 # End of https://www.toptal.com/developers/gitignore/api/visualstudiocode,dotnetcore,aspnetcore
 
-obj
-bin
 appsettings.json
 appsettings.Development.json
