@@ -1,8 +1,15 @@
-﻿@{
+﻿@* Especifico el tipo de modelo con el que puede trabajar esta vista
+por lo tanto se hace fuertemen te tipado ya que valida
+que las propiedades que queremos acceder pertenezcan al tipo
+especificado *@
+@model Escuela
+
+@{
     //Nombre que se muestra en la pestaña del browser
     ViewData["Title"] = "Información Escuela";
 }
 @* Aqui va el html de nuestra vista *@
-<h1>Escuela: </h1>
-<h2>Nombre: </h2>
-<p>Año Fundación: </p>
+@* Aca podemos consumir los datos del modelo que se esta pasando a la vista *@
+<h1>Escuela</h1>
+<h2>Nombre: @Model.Nombre </h2>
+<p>Año Fundación: @Model.AnioFundacion </p>

@@ -1,3 +1,5 @@
+using System;
+using curso_asp_netcore.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace curso_asp_netcore.Controllers
@@ -9,7 +11,14 @@ namespace curso_asp_netcore.Controllers
         //En ese caso IActionResult
         public IActionResult Index()
         {
-            return View();
+            //instancia de la escuela para que sea enviada a la vista
+            var escuela = new Escuela();
+            escuela.AnioFundacion = 2005;
+            escuela.EscuelaId = Guid.NewGuid().ToString();
+            escuela.Nombre = "Platzi School";
+
+            //envio de la instancia escuela a la vista Index
+            return View(escuela);
         }
     }
 }
