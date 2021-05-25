@@ -7,9 +7,12 @@ especificado *@
 @{
     //Nombre que se muestra en la pestaña del browser
     ViewData["Title"] = "Información Escuela";
+    @* El layout define la plantilla HTML que va a cargar esta vista
+    si no se especifica, automaticamente se carga la vista por defecto _Layout *@
+    Layout = "Simple";
 }
 @* Aqui va el html de nuestra vista *@
 @* Aca podemos consumir los datos del modelo que se esta pasando a la vista *@
-<h1>Escuela</h1>
+<h1>@ViewData["Title"]</h1>
 <h2>Nombre: @Model.Nombre </h2>
 <p>Año Fundación: @Model.AnioFundacion </p>
