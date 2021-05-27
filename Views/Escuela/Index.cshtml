@@ -5,7 +5,9 @@ especificado *@
 @model Escuela
 
 @{
-    //Nombre que se muestra en la pestaña del browser
+    //El ViewBag y el ViewData son dos vistas de la misma informacion, 
+    //pero se acceden a ellos de forma distinta. El ViewBag puede ser 
+    //accedido por a través de operaciones básica de objetos y el ViewData puede ser tratado como un diccionario. Básicamente es cuestión de gustos.
     ViewData["Title"] = "Información Escuela";
     @* El layout define la plantilla HTML que va a cargar esta vista
     si no se especifica, automaticamente se carga la vista por defecto _Layout *@
@@ -15,4 +17,4 @@ especificado *@
 @* Aca podemos consumir los datos del modelo que se esta pasando a la vista *@
 <h1>@ViewData["Title"]</h1>
 <h2>Nombre: @Model.Nombre </h2>
-<p>Año Fundación: @Model.AnioFundacion </p>
+<p>Año Fundación: @Model.AnioCreacion </p>

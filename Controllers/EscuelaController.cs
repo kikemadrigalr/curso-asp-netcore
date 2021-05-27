@@ -13,8 +13,8 @@ namespace curso_asp_netcore.Controllers
         {
             //instancia de la escuela para que sea enviada a la vista
             var escuela = new Escuela();
-            escuela.AnioFundacion = 2005;
-            escuela.EscuelaId = Guid.NewGuid().ToString();
+            escuela.AnioCreacion = 2005;
+            escuela.UniqueId = Guid.NewGuid().ToString();
             escuela.Nombre = "Platzi School";
 
             //envio de la instancia escuela a la vista Index
