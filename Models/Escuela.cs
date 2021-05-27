@@ -14,7 +14,7 @@ namespace curso_asp_netcore.Models
         // la propiedad TipoEscuela sera del TiposEscuelas
         //el cual es un objeto Enumeraable creado a nivel de las entidades
         public TiposEscuela TipoEscuela { get; set; }
-        public string Direccion { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public string Direccion { get; set; }
 
     //otra forma de escribir el Constructor utilizando igualacion por tuplas
         public Escuela(string nombre, int anio) => (Nombre, AnioCreacion) = (nombre, anio);
