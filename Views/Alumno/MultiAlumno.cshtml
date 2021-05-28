@@ -1,7 +1,7 @@
-﻿@model List<Asignatura>
+﻿@model List<Alumno>
 
 @{
-    ViewData["Title"] = "Información Asignaturas";
+    ViewData["Title"] = "Información de Alumnos";
     Layout = "Simple";
 }
 @* Aqui va el html de nuestra vista *@
@@ -26,9 +26,9 @@
       si no se pasa dicho modelo ella entiende que va a trabajar 
       con el modelo de la vista que la invocò *@
 
-      @foreach (var asignatura in Model)
+      @foreach (var alumno in Model)
       { 
-        <partial name="ObjetoEscuelaSimple" model="asignatura"/>
+        <partial name="ObjetoEscuelaSimple" model="alumno"/>
       }
 
   </tbody>
