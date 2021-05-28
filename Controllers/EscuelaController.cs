@@ -21,6 +21,10 @@ namespace curso_asp_netcore.Controllers
             escuela.TipoEscuela = TiposEscuela.Primaria;
             escuela.Direccion = "Avenida Siempre Viva";
 
+            // ViewBag.fecha = DateTime.UtcNow();
+            ViewBag.Fecha = DateTime.Now;
+            
+
             //envio de la instancia escuela a la vista Index
             return View(escuela);
         }

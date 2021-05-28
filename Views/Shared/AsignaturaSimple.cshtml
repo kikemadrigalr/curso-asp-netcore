@@ -1,0 +1,17 @@
+@model Asignatura
+<tr>
+    <th scope="row">1</th>
+    <td>@Model.Nombre</td>
+    <td>@Model.UniqueId</td>
+</tr>
+
+@* esto es una vista parcial
+la cual puede ser llamada desde otra vista 
+y renderiza un trozo definido de informacion 
+puede ser utilizada cuando debemos mostrar muchas veces este trozo de vista
+por ejemplo una lista
+se debe ubicar en la carpeta shared*@
+
+@* Una ** vista parcial ** es un archivo de marcado .cshtml 
+que se mantiene dentro de la carpeta Vistas (MVC) o Páginas (Razor Pages).
+Los nombres de archivo de las vistas parciales suelen comenzar con un guión bajo (_). *@
