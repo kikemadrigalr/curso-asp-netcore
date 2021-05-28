@@ -14,7 +14,7 @@ namespace curso_asp_netcore.Controllers
             //instancia de la escuela para que sea enviada a la vista
             var escuela = new Escuela();
             escuela.AnioCreacion = 2005;
-            escuela.UniqueId = Guid.NewGuid().ToString();
+            // escuela.UniqueId = Guid.NewGuid().ToString();
             escuela.Nombre = "Escuela Primaria de Springfield";
             escuela.Ciudad = "Springfield";
             escuela.Pais = "Estados Unidos";

@@ -15,7 +15,7 @@ namespace curso_asp_netcore.Controllers
             return View(
                 new Asignatura {
                     Nombre = "Programacion",
-                    UniqueId = Guid.NewGuid ().ToString()
+                    // UniqueId = Guid.NewGuid ().ToString()
                 }
             );
         }
@@ -28,23 +28,23 @@ namespace curso_asp_netcore.Controllers
             var listaAsignaturas = new List<Asignatura> () {
                 new Asignatura {
                     Nombre = "Matemáticas",
-                    UniqueId = Guid.NewGuid ().ToString()
+                    // UniqueId = Guid.NewGuid ().ToString()
                 },
                 new Asignatura {
                     Nombre = "Educación Física",
-                    UniqueId = Guid.NewGuid ().ToString()
+                    // UniqueId = Guid.NewGuid ().ToString()
                 },
                 new Asignatura {
                     Nombre = "Castellano",
-                    UniqueId = Guid.NewGuid ().ToString()
+                    // UniqueId = Guid.NewGuid ().ToString()
                 },
                 new Asignatura {
                     Nombre = "Ciencias Naturales",
-                    UniqueId = Guid.NewGuid ().ToString()
+                    // UniqueId = Guid.NewGuid ().ToString()
                 },
                 new Asignatura {
                     Nombre = "Programacion",
-                    UniqueId = Guid.NewGuid ().ToString()
+                    // UniqueId = Guid.NewGuid ().ToString()
                 }
             }; 
 
