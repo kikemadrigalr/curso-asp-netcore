@@ -16,7 +16,7 @@ namespace curso_asp_netcore.Controllers
             return View(
                 new Alumno {
                     Nombre = "Bart Simpson",
-                    UniqueId = Guid.NewGuid ().ToString()
+                    Id = Guid.NewGuid ().ToString()
                 }
             );
         }
@@ -28,7 +28,8 @@ namespace curso_asp_netcore.Controllers
                 return View("MultiAlumno", listaAlumnos);
         }
 
-         private List<Alumno> GenerarListaAlumnos(){
+         private List<Alumno> GenerarListaAlumnos()
+         {
             string[] nombre1 = { "Bart", "Homero", "Ned", "Lisa", "Marge", "Maggy", "Milhouse", "Bob", "Montgomery" };
             string[] apellido1 = { "Simpson", "Van Houten", "Flanders", "Patiño", "Bruns"};
 
@@ -36,7 +37,7 @@ namespace curso_asp_netcore.Controllers
                                 from a1 in apellido1
                                 select new Alumno(){ Nombre = $"{n1} {a1}"};
 
-            return listaAlumnos.OrderBy(alum => alum.UniqueId).ToList();
+            return listaAlumnos.OrderBy(alum => alum.Id).ToList();
         }
     }
 }
