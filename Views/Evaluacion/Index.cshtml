@@ -1,0 +1,32 @@
+﻿@model Evaluacion
+
+@{
+    ViewData["Title"] = "Información Evaluación";
+    Layout = "Simple";
+}
+
+@* Aqui va el html de nuestra vista *@
+@* Aca podemos consumir los datos del modelo que se esta pasando a la vista *@
+@* <h1>@ViewData["Title"]</h1>
+<h2>Nombre: @Model.Nombre </h2> *@
+
+<h1>@ViewData["Title"]</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Unique ID</th>
+    </tr>
+  </thead>
+  <tbody>
+      @* partial es un taghelper de netcore
+      que permite llamar y renderiazar vistas parciales
+      asignndole la vista a mostrar y especificar un modelo de ser nesesario
+      si no se pasa dicho modelo ella entiende que va a trabajar 
+      con el modelo de la vista que la invocò *@
+      <partial name="ObjetoEscuelaSimple"/>
+  </tbody>
+</table>
+

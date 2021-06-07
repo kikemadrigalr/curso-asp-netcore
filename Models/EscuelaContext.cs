@@ -53,14 +53,50 @@ namespace curso_asp_netcore.Models
       var alumnos = CargarAlumnos(cursos);
 
       //***********CARGAR Evaluciones****************//
+      var evaluaciones = CargarEvaluaciones(cursos, asignaturas, alumnos);
 
-       // Enviar los datos a la BD
+      // Enviar los datos a la BD
       // HasData verifica que no tenga datos para ejecutar una accion
       //hasData debe recibir un array para funcionar 
       modelBuilder.Entity<Escuela>().HasData(escuela);
       modelBuilder.Entity<Curso>().HasData(cursos.ToArray());
       modelBuilder.Entity<Asignatura>().HasData(asignaturas.ToArray());
       modelBuilder.Entity<Alumno>().HasData(alumnos.ToArray());
+      modelBuilder.Entity<Evaluacion>().HasData(evaluaciones.ToArray());
+    }
+
+    private static List<Evaluacion> CargarEvaluaciones(List<Curso> cursos, List<Asignatura> asignaturas, List<Alumno> alumnos)
+    {
+      int evaluacionesTotales = 2;
+      string[] prueba = { "Parcial", "Final", "Preparatorio", "Quiz", "Acumulativo", "Práctico" };
+      Random rnd = new Random();
+      Random nota = new Random();
+      var listaEvaluaciones = new List<Evaluacion>();
+
+
+      foreach (var curso in cursos)
+      {
+        foreach (var alumno in alumnos)
+        {
+          foreach (var asignatura in asignaturas)
+          {
+            for (var i = 0; i < evaluacionesTotales; i++)
+            {
+              int numNombre = rnd.Next(0, 6);
+              var tmp = new List<Evaluacion>(){
+                     new Evaluacion() {
+                         Nombre = $"{prueba[numNombre] }" + " " + $"{asignatura.Nombre}",
+                         AlumnoId = alumno.Id,
+                         AsignaturaId = asignatura.Id,
+                         Nota = Math.Round(nota.NextDouble() * 5, 2)
+                    }
+                   };
+              listaEvaluaciones.AddRange(tmp);
+            }
+          }
+        }
+      }
+      return listaEvaluaciones;
     }
 
     private List<Alumno> CargarAlumnos(List<Curso> cursos)
