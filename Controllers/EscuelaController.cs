@@ -8,8 +8,6 @@ namespace curso_asp_netcore.Controllers
     //Todo controlador debe Heredar de la clase Controller
     public class EscuelaController : Controller
     {
-
-        private EscuelaContext _Context;
         //Cada metodo que ejecute una vista debe devolver un tipo de dato
         //En ese caso IActionResult
         public IActionResult Index()
@@ -32,6 +30,7 @@ namespace curso_asp_netcore.Controllers
             return View(escuela);
         }
 
+        private EscuelaContext _Context;
         //acceder al servicio de Base de datos en memoria
         //mediante un constructor especial que recibe el contexto de Base de datos
         public EscuelaController(EscuelaContext context)
