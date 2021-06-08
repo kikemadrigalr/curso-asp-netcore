@@ -7,12 +7,12 @@ using Microsoft.AspNetCore.Mvc;
 namespace curso_asp_netcore.Controllers
 {
     //Todo controlador debe Heredar de la clase Controller
-    public class AlumnoController : Controller
+    public class CursoController : Controller
     {
         private EscuelaContext _Context;
         //acceder al servicio de Base de datos en memoria
         //mediante un constructor especial que recibe el contexto de Base de datos
-        public AlumnoController(EscuelaContext context)
+        public CursoController(EscuelaContext context)
         {
             _Context = context;
         }
@@ -21,29 +21,30 @@ namespace curso_asp_netcore.Controllers
         //En ese caso IActionResult
     //    [Route("Asignatura/Index")]
     //     [Route("Asignatura/Index/{asignaturaId}")]
+        [Route("Curso/{id}")]
         public IActionResult Index(string id)
         {
             if(!string.IsNullOrWhiteSpace(id))
             {
-                var alumnos = from alum in _Context.Alumnos
-                                where alum.Id == id
-                                select alum;
+                var cursos = from cur in _Context.Cursos
+                                where cur.Id == id
+                                select cur;
 
-            return View(alumnos.SingleOrDefault());
+            return View(cursos.SingleOrDefault());
             }
             else
             {
-                return View("MultiAlumno",_Context.Alumnos);
+                return View("MultiCurso",_Context.Cursos);
             }
             
         }
 
-        public IActionResult MultiAlumno()
+        public IActionResult MultiCurso()
         {
             // var listaAlumnos = GenerarListaAlumnos();
 
                 //Aqui estamos especificando entre comillas la vista que queremos mostrar
-                return View("MultiAlumno", _Context.Alumnos);
+                return View("MultiCurso", _Context.Cursos);
         }
     }
 }
