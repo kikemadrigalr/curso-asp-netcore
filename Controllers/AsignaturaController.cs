@@ -19,16 +19,31 @@ namespace curso_asp_netcore.Controllers
         }
         //Cada metodo que ejecute una vista debe devolver un tipo de dato
         //En ese caso IActionResult
-        public IActionResult Index()
+        // public IActionResult Index()
+        // {
+        //     return View(_Context.Asignaturas.FirstOrDefault());
+        // }
+
+        //*****ENRRUTAMENTO*****//
+        [Route("Asignatura/Index")]
+        [Route("Asignatura/Index/{asignaturaId}")]
+        public IActionResult Index(string asignaturaId)
         {
-            return View(
-                // new Asignatura {
-                //     Nombre = "Programacion",
-                //     // UniqueId = Guid.NewGuid ().ToString()
-                // }
-                _Context.Asignaturas.FirstOrDefault()
-            );
+            if(!string.IsNullOrWhiteSpace(asignaturaId))
+            {
+                var asignatura = from asig in _Context.Asignaturas
+                                where asig.Id == asignaturaId
+                                select asig;
+
+            return View(asignatura.SingleOrDefault());
+            }
+            else
+            {
+                return View("MultiAsignatura",_Context.Asignaturas);
+            }
+            
         }
+
 
         public IActionResult MultiAsignatura()
         {

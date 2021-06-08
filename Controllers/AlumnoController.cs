@@ -1,6 +1,6 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
+using System.Collections.Generic;
 using curso_asp_netcore.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -21,14 +21,9 @@ namespace curso_asp_netcore.Controllers
         //En ese caso IActionResult
         public IActionResult Index()
         {
-            return View(
-                // new Alumno {
-                //     Nombre = "Bart Simpson",
-                //     Id = Guid.NewGuid ().ToString()
-                // }
-                _Context.Alumnos.FirstOrDefault()
-            );
+            return View(_Context.Alumnos.FirstOrDefault());
         }
+
         public IActionResult MultiAlumno()
         {
             // var listaAlumnos = GenerarListaAlumnos();
