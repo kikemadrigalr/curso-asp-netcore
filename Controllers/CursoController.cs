@@ -21,7 +21,10 @@ namespace curso_asp_netcore.Controllers
         //En ese caso IActionResult
     //    [Route("Asignatura/Index")]
     //     [Route("Asignatura/Index/{asignaturaId}")]
+        [Route("Curso")]
         [Route("Curso/{id}")]
+        [Route("Curso/Index")]
+        [Route("Curso/Index/{id}")]
         public IActionResult Index(string id)
         {
             if(!string.IsNullOrWhiteSpace(id))

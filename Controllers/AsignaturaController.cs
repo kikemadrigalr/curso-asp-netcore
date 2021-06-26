@@ -25,6 +25,8 @@ namespace curso_asp_netcore.Controllers
         // }
 
         //*****ENRRUTAMENTO*****//
+        [Route("Asignatura/")]
+        [Route("Asignatura/{iasignaturaId}")]
         [Route("Asignatura/Index")]
         [Route("Asignatura/Index/{asignaturaId}")]
         public IActionResult Index(string asignaturaId)

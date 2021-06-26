@@ -19,8 +19,10 @@ namespace curso_asp_netcore.Controllers
 
         //Cada metodo que ejecute una vista debe devolver un tipo de dato
         //En ese caso IActionResult
-    //    [Route("Asignatura/Index")]
-    //     [Route("Asignatura/Index/{asignaturaId}")]
+        [Route("Alumno")]
+        [Route("Alumno/Index")]
+        [Route("Alumno/{id}")]
+        [Route("Alumno/Index/{id}")]
         public IActionResult Index(string id)
         {
             if(!string.IsNullOrWhiteSpace(id))
