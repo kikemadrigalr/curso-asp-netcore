@@ -49,5 +49,20 @@ namespace curso_asp_netcore.Controllers
                 //Aqui estamos especificando entre comillas la vista que queremos mostrar
                 return View("MultiCurso", _Context.Cursos);
         }
+
+        public IActionResult Create(){
+            return View();
+        }
+        
+        [HttpPost]
+        public IActionResult Create(Curso curso){
+
+            var escuela = _Context.Escuelas.FirstOrDefault();
+            curso.EscuelaId = escuela.Id;
+
+            _Context.Cursos.Add(curso);
+            _Context.SaveChanges();
+            return View();
+        }
     }
 }

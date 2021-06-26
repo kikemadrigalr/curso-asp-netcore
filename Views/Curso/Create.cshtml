@@ -1,0 +1,34 @@
+﻿@model Curso
+
+@{
+    ViewData["Title"] = "Crear un Curso";
+    Layout = "Simple";
+}
+
+@* Aqui va el html de nuestra vista *@
+@* Aca podemos consumir los datos del modelo que se esta pasando a la vista *@
+@* <h1>@ViewData["Title"]</h1>
+<h2>Nombre: @Model.Nombre </h2> *@
+
+<h1>@ViewData["Title"]</h1>
+
+<section>
+  <form method="POST">
+    <div class="mb-3">
+      <label asp-for="Nombre" class="form-label">Nombre</label>
+      <input type="text" class="form-control" asp-for="Nombre" id="Nombre" aria-describedby="emailHelp">
+    </div>
+    <div class="mb-3">
+      <label asp-for="Direccion" class="form-label">Dirección</label>
+      <input type="text" class="form-control" id="Direccion">
+    </div>
+
+    <div class="mb-3">
+      <label asp-for="Jornada" class="form-label">Jornada</label>
+      <input type="text" class="form-control" id="Jornada">
+    </div>
+  
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</section>
+
