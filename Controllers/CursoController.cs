@@ -57,12 +57,22 @@ namespace curso_asp_netcore.Controllers
         [HttpPost]
         public IActionResult Create(Curso curso){
 
-            var escuela = _Context.Escuelas.FirstOrDefault();
-            curso.EscuelaId = escuela.Id;
+            if(ModelState.IsValid)
+            {
+                var escuela = _Context.Escuelas.FirstOrDefault();
+                curso.EscuelaId = escuela.Id;
 
-            _Context.Cursos.Add(curso);
-            _Context.SaveChanges();
-            return View();
+                _Context.Cursos.Add(curso);
+                _Context.SaveChanges();
+                ViewBag.Mensaje = "Curso Creado con Éxito";
+                return View("Index", curso);
+            }
+            else
+            {
+                return  View(curso);
+            }
+
+            
         }
     }
 }

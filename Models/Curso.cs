@@ -1,10 +1,14 @@
 using System.Collections.Generic;
 using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace curso_asp_netcore.Models
 {
     public class Curso:ObjetoEscuelaBase
     {
+        [Required]
+        public override string Nombre { get; set; }
+
         public TiposJornada Jornada { get; set; }
 
         public List<Asignatura> Asignaturas { get; set; }
