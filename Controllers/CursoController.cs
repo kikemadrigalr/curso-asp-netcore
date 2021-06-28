@@ -74,5 +74,64 @@ namespace curso_asp_netcore.Controllers
 
             
         }
+
+        [Route("Curso/Update/{id}")]
+        public IActionResult Update(string id)
+        {
+            var curso = from cur in _Context.Cursos
+                            where cur.Id == id
+                            select cur;
+            return View(curso.SingleOrDefault());
+        }
+
+        [HttpPost]
+        [Route("Curso/Update/{id}")]
+        // public IActionResult Update([Bind(Include="Id,Nombre,Direccion,Jornada")] Curso newData)
+        public IActionResult Update(string id, Curso newData)
+        {
+            if (id != null && ModelState.IsValid)
+            {
+                var cursoSearch = from cur in _Context.Cursos
+                            where cur.Id == id
+                            select cur;
+
+                var curso = cursoSearch.SingleOrDefault();
+
+                //Update
+                curso.Nombre = newData.Nombre;
+                curso.Direccion = newData.Direccion;
+                curso.Jornada = newData.Jornada;
+                _Context.Cursos.Update(curso);
+                _Context.SaveChanges();
+
+                // return View("Index", newData);
+                return RedirectToAction("MultiCurso");
+            }
+            else
+            {
+                ViewBag.MensajeError = "Error al modificar Curso";
+                return View("Index");
+            }
+        }
+
+        [Route("Curso/Delete/{id}")]
+        public IActionResult Delete(string id)
+        {
+            if(id != null)
+            {
+                var cursoSearch = from cur in _Context.Cursos
+                            where cur.Id == id
+                            select cur;
+
+                var curso = cursoSearch.SingleOrDefault();
+                _Context.Cursos.Remove(curso);
+                _Context.SaveChanges();
+                return View();
+            }
+            else{
+                return View("Multicurso");
+            }
+            
+        }
     }
 }

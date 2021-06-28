@@ -2,7 +2,7 @@
 @model Curso
 
 @{
-    ViewData["Title"] = "Crear un Curso";
+    ViewData["Title"] = "Editar Curso";
     Layout = "Simple";
 }
 
@@ -17,12 +17,18 @@
   <div class="text-danger" asp-validation-summary="All"></div>
   <form method="POST">
     <div class="mb-3">
-      <label asp-for="Nombre" class="form-label">Nombre</label>
-      <input type="text" class="form-control" asp-for="Nombre" id="Nombre" aria-describedby="emailHelp">
+      <label asp-for="Id" class="form-label">Unique ID</label>
+      <input type="text" class="form-control" asp-for="Id" id="Id" disabled>
     </div>
+
+    <div class="mb-3">
+      <label asp-for="Nombre" class="form-label">Nombre</label>
+      <input type="text" class="form-control" asp-for="Nombre" id="Nombre" >
+    </div>
+
     <div class="mb-3">
       <label asp-for="Direccion" class="form-label">Dirección</label>
-      <input type="text" class="form-control" id="Direccion">
+      <input type="text" class="form-control" id="Direccion" asp-for="Direccion">
     </div>
 
     <div class="mb-3">
@@ -35,8 +41,6 @@
         )
     </div>
 
-
-  
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
 </section>

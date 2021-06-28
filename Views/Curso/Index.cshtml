@@ -1,4 +1,5 @@
-﻿@model Curso
+﻿@using curso_asp_netcore.Models
+@model Curso
 
 @{
     ViewData["Title"] = "Información de Curso";
@@ -12,9 +13,23 @@
 
 <h1>@ViewData["Title"]</h1>
 
-<div class="alert alert-success" role="alert">
-  <strong>@ViewBag.Mensaje</strong>
-</div>
+@{
+  if(@ViewBag.Mensaje != null)
+  {
+    <div class="alert alert-success" role="alert">
+      <strong>@ViewBag.Mensaje</strong>
+    </div>
+  }
+}
+
+@{
+  if(@ViewBag.MensajeError != null)
+  {
+    <div class="alert alert-danger" role="alert">
+      <strong>@ViewBag.MensajeError</strong>
+    </div>
+  }
+}
 
 <table class="table table-striped">
   <thead>
