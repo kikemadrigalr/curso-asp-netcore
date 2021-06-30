@@ -23,6 +23,7 @@
       <th scope="col">Nombre</th>
       <th scope="col">Unique ID</th>
       <th scope="col">Dirección</th>
+      <th scope="col">Jornada</th>
       <th scope="col">Acciones</th>
     </tr>
   </thead>
@@ -33,12 +34,11 @@
         <td>@curso.Nombre</td>
         <td>@curso.Id</td>
         <td>@curso.Direccion</td>
+        <td>@curso.Jornada</td>
         <td>
-           <a class="btn btn-warning" href="~/Curso/@curso.Id">Detalles</a>
-          @* <button type="button" class="btn btn-success">Editar</button> *@
+          <a class="btn btn-warning" href="~/Curso/@curso.Id">Detalles</a>
           <a class="btn btn-success"  href="~/Curso/Update/@curso.Id">Editar</a>
-          @* <button type="button" class="btn btn-danger" asp-controller="Curso" asp-action="Delete" asp-route-id="@curso.Id">Eliminar</button> *@
-          <a class="btn btn-danger"  asp-controller="Curso" asp-controller="Delete" asp-route-id="@curso.Id">Eliminar</a>
+          <a class="btn btn-danger"  href="~/Curso/Delete/@curso.Id">Eliminar</a>
         </td>
       </tr>
     }

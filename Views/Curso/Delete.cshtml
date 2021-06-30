@@ -1,6 +1,6 @@
 ﻿@model Curso
 @{
-    ViewData["Title"] = "Eliminar Curso";
+    ViewData["Title"] = "Confirmarcion de Eliminación";
     Layout = "Simple";
 }
 
@@ -12,8 +12,12 @@
 <h1>@ViewData["Title"]</h1>
 
 <section>
-  <div class="alert alert-success" role="alert">
-    <strong>Curso Eliminado Con Exito</strong>
+  <div class="alert alert-danger" role="alert">
+    <strong>Desea Elimar El Curso @Model.Id - @Model.Nombre</strong>
   </div>
+  <form method="post">
+     <button type="submit" class="btn btn-primary" asp-controller="Curso" asp-action="Delete" asp-route-id="@Model.Id">Eliminar</button>
+  </form>
+  
 </section>
 

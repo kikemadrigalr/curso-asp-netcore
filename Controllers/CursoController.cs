@@ -86,7 +86,6 @@ namespace curso_asp_netcore.Controllers
 
         [HttpPost]
         [Route("Curso/Update/{id}")]
-        // public IActionResult Update([Bind(Include="Id,Nombre,Direccion,Jornada")] Curso newData)
         public IActionResult Update(string id, Curso newData)
         {
             if (id != null && ModelState.IsValid)
@@ -124,9 +123,42 @@ namespace curso_asp_netcore.Controllers
                             select cur;
 
                 var curso = cursoSearch.SingleOrDefault();
-                _Context.Cursos.Remove(curso);
-                _Context.SaveChanges();
-                return View();
+                if(curso != null)
+                {
+                    return View("Delete", curso);
+                }
+                else
+                {
+                    return View("NotFoud");
+                }
+            }
+            else
+            {
+                return View("NotFound");
+            }
+        }
+
+        [Route("Curso/Delete/{id}")]
+        [HttpPost]
+        public IActionResult Delete(string id, Curso cursoDelete)
+        {
+            if(id != null)
+            {
+                var cursoSearch = from cur in _Context.Cursos
+                            where cur.Id == id
+                            select cur;
+
+                var curso = cursoSearch.SingleOrDefault();
+                if(curso != null && curso.Id == cursoDelete.Id)
+                {
+                    _Context.Cursos.Remove(curso);
+                    _Context.SaveChanges();
+                    return RedirectToAction("Multicurso");
+                }
+                else
+                {
+                    return View("NotFound");
+                }
             }
             else{
                 return View("Multicurso");
