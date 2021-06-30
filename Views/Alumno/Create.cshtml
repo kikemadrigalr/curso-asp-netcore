@@ -1,0 +1,34 @@
+﻿@using curso_asp_netcore.Models 
+@model Alumno
+
+@{
+    ViewData["Title"] = "Crear Alumno";
+    Layout = "Simple";
+
+    List<SelectListItem> items = (List<SelectListItem>)ViewBag.items;
+}
+
+@* Aqui va el html de nuestra vista *@
+@* Aca podemos consumir los datos del modelo que se esta pasando a la vista *@
+@* <h1>@ViewData["Title"]</h1>
+<h2>Nombre: @Model.Nombre </h2> *@
+
+<h1>@ViewData["Title"]</h1>
+
+<section>
+  <div class="text-danger" asp-validation-summary="All"></div>
+  <form method="POST">
+    <div class="mb-3">
+      <label asp-for="Nombre" class="form-label">Nombre</label>
+      <input type="text" class="form-control" asp-for="Nombre" id="Nombre">
+    </div>
+
+      <div class="mb-3">
+        <label asp-for="Curso" class="form-label">Curso</label>
+        @Html.DropDownList("Cursos",items, "Seleccione un curso",  new {@class = "form-control"})
+      </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</section>
+
