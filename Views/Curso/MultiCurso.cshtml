@@ -11,9 +11,10 @@
 
 <h1>@ViewData["Title"]</h1>
 <section>
-  <div class="add">
-    @* <button type="button" class="btn btn-primary">Agregar</button> *@
-    <a class="btn btn-primary"  asp-controller="Curso" asp-action="Create">Agregar</a>
+  <div class="row justify-content-end">
+    <div class="add col-2 ">
+      <a class="btn btn-primary"  asp-controller="Curso" asp-action="Create">Agregar Curso</a>
+    </div>
   </div>
 
   <div class="info">

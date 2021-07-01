@@ -21,6 +21,16 @@
   }
 }
 
+@{
+  if(@ViewBag.MensajeError != null)
+  {
+    <div class="alert alert-danger" role="alert">
+      <strong>@ViewBag.MensajeError</strong>
+    </div>
+  }
+}
+
+
 <table class="table table-striped">
   <thead>
     <tr>

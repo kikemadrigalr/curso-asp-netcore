@@ -51,6 +51,127 @@ namespace curso_asp_netcore.Controllers
 
         public IActionResult Create()
         {
+            ViewBag.items = obtenerListaCursos();
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Create(Alumno alumno)
+        {
+            if(ModelState.IsValid)
+            {   
+                Console.WriteLine(alumno.CursoId);
+
+                var curso = from c in _Context.Cursos
+                            where c.Id == alumno.CursoId
+                            select c;
+               Curso cursoSearch = curso.SingleOrDefault();
+                alumno.Curso = cursoSearch;
+
+                _Context.Alumnos.Add(alumno);
+                _Context.SaveChanges();
+                // console.WriteLine(alumno);
+                ViewBag.Mensaje = "Alumno Creado con Éxito";
+                return View("Index", alumno);
+            }
+            else
+            {
+                return View(alumno);
+            }
+        }
+
+        [Route("Alumno/Update/{id}")]
+        public IActionResult Update(string id)
+        {
+            Alumno alumno = obtenerAlumno(id);
+
+            ViewBag.items = obtenerListaCursos();
+
+            return View(alumno);
+        }
+
+        [HttpPost]
+        [Route("Alumno/Update/{id}")]
+        public IActionResult Update(string id, Alumno newData)
+        {
+            if (id != null && ModelState.IsValid)
+            {
+                Alumno alumno = obtenerAlumno(id);
+
+                alumno.Nombre = newData.Nombre;
+                alumno.Curso = newData.Curso;
+                _Context.Alumnos.Update(alumno);
+                _Context.SaveChanges();
+
+                return RedirectToAction("Multialumno");
+            }
+            else
+            {
+                ViewBag.MensajeError = "Error al modificar Curso";
+                return View("Index");
+            }
+            return View();
+        }
+
+        [Route("Alumno/Delete/{id}")]
+        public IActionResult Delete(string id)
+        {
+            if(id != null)
+            {
+                 Alumno alumno = obtenerAlumno(id);
+
+                if(alumno != null)
+                {
+                    return View("Delete", alumno);
+                }
+                else
+                {
+                    return View("NotFoud");
+                }
+            }
+            else
+            {
+                return View("NotFound");
+            }
+        }
+
+        [Route("Alumno/Delete/{id}")]
+        [HttpPost]
+        public IActionResult Delete(string id, Alumno alumnoDelete)
+        {
+            if(id != null)
+            {
+                Alumno alumno = obtenerAlumno(id);
+
+                if(alumno != null && alumno.Id == alumnoDelete.Id)
+                {
+                    _Context.Alumnos.Remove(alumno);
+                    _Context.SaveChanges();
+                    return RedirectToAction("Multialumno");
+                }
+                else
+                {
+                    return View("NotFound");
+                }
+            }
+            else{
+                return View("Multicurso");
+            }
+            
+        }
+
+        private Alumno obtenerAlumno(string id)
+        {
+            var alumno = from alum in _Context.Alumnos
+                            where alum.Id == id
+                            select alum;
+                Alumno alumnoSearch = alumno.SingleOrDefault();
+                
+                return alumnoSearch;
+        }
+
+        private List<SelectListItem> obtenerListaCursos()
+        {
             List<Curso> listaCursos = null;
             listaCursos = (from c in _Context.Cursos
                             select new Curso
@@ -67,24 +188,7 @@ namespace curso_asp_netcore.Controllers
                 };
             });
 
-            ViewBag.items = items;
-            return View();
-        }
-
-        [HttpPost]
-        public IActionResult Create(Alumno alumno)
-        {
-            if(ModelState.IsValid)
-            {
-                _Context.Alumnos.Add(alumno);
-                _Context.SaveChanges();
-                ViewBag.Mensaje = "Alumno Creado con Éxito";
-                return View("Index", alumno);
-            }
-            else
-            {
-                return View(alumno);
-            }
+            return items;
         }
     }
 }
