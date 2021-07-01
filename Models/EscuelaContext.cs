@@ -135,11 +135,11 @@ namespace curso_asp_netcore.Models
     private static List<Curso> CargarCursos(Escuela escuela)
     {
       var cursosEscuela = new List<Curso>(){
-                new Curso(){ EscuelaId = escuela.Id, Nombre = "101", Jornada = TiposJornada.Mañana},
-                new Curso(){ EscuelaId = escuela.Id, Nombre = "201", Jornada = TiposJornada.Tarde},
-                new Curso(){ EscuelaId = escuela.Id, Nombre = "301", Jornada = TiposJornada.Noche},
-                new Curso(){ EscuelaId = escuela.Id, Nombre = "401", Jornada = TiposJornada.Mañana},
-                new Curso(){ EscuelaId = escuela.Id, Nombre = "501", Jornada = TiposJornada.Tarde}
+                new Curso(){ EscuelaId = escuela.Id, Nombre = "101", Direccion = "Avenida Siempre Viva", Jornada = TiposJornada.Mañana},
+                new Curso(){ EscuelaId = escuela.Id, Nombre = "201", Direccion = "Avenida Siempre Viva", Jornada = TiposJornada.Tarde},
+                new Curso(){ EscuelaId = escuela.Id, Nombre = "301", Direccion = "Avenida Siempre Viva", Jornada = TiposJornada.Noche},
+                new Curso(){ EscuelaId = escuela.Id, Nombre = "401", Direccion = "Avenida Siempre Viva", Jornada = TiposJornada.Mañana},
+                new Curso(){ EscuelaId = escuela.Id, Nombre = "501", Direccion = "Avenida Siempre Viva", Jornada = TiposJornada.Tarde}
             };
 
             return cursosEscuela;

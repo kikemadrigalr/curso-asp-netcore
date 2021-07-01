@@ -110,7 +110,6 @@ namespace curso_asp_netcore.Controllers
                 ViewBag.MensajeError = "Error al modificar Curso";
                 return View("Index");
             }
-            return View();
         }
 
         [Route("Alumno/Delete/{id}")]
