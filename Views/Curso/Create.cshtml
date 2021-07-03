@@ -18,11 +18,13 @@
   <form method="POST">
     <div class="mb-3">
       <label asp-for="Nombre" class="form-label"></label>
-      <input type="text" class="form-control" asp-for="Nombre" id="Nombre" aria-describedby="emailHelp">
+      <input type="text" class="form-control" asp-for="Nombre" id="Nombre" data-val="true" data-val-required="Por Favor Ingrese el Nombre del Alumno" >
+      <span class="field-validation-valid bg-danger text-white" data-valmsg-for="Nombre" data-valmsg-replace="true"></span>
     </div>
     <div class="mb-3">
       <label asp-for="Direccion" class="form-label"></label>
-      <input type="text" class="form-control" asp-for="Direccion" id="Direccion">
+      <input type="text" class="form-control" asp-for="Direccion" id="Direccion"  data-val="true" data-val-required="Debe Ingresar una dirección valida">
+      <span class="field-validation-valid bg-danger text-white" data-valmsg-for="Direccion" data-valmsg-replace="true"></span>
     </div>
 
     <div class="mb-3">

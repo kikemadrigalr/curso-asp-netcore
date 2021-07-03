@@ -58,8 +58,9 @@ namespace curso_asp_netcore.Controllers
         [HttpPost]
         public IActionResult Create(Alumno alumno)
         {
+            // alumno.CursoId = alumno.CursoId.ToString();
             if(ModelState.IsValid)
-            {   
+            {
                 Console.WriteLine(alumno.CursoId);
 
                 var curso = from c in _Context.Cursos
@@ -67,6 +68,8 @@ namespace curso_asp_netcore.Controllers
                             select c;
                Curso cursoSearch = curso.SingleOrDefault();
                 alumno.Curso = cursoSearch;
+                alumno.CursoId = cursoSearch.Id;
+                alumno.CursoNombre = cursoSearch.Nombre;
 
                 _Context.Alumnos.Add(alumno);
                 _Context.SaveChanges();
@@ -100,6 +103,8 @@ namespace curso_asp_netcore.Controllers
 
                 alumno.Nombre = newData.Nombre;
                 alumno.Curso = newData.Curso;
+                alumno.CursoId = newData.CursoId;
+                // alumno.CursoNombre = newData
                 _Context.Alumnos.Update(alumno);
                 _Context.SaveChanges();
 
