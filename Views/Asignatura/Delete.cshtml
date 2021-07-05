@@ -1,0 +1,23 @@
+﻿@model Asignatura
+@{
+    ViewData["Title"] = "Confirmarcion de Eliminación";
+    Layout = "Simple";
+}
+
+@* Aqui va el html de nuestra vista *@
+@* Aca podemos consumir los datos del modelo que se esta pasando a la vista *@
+@* <h1>@ViewData["Title"]</h1>
+<h2>Nombre: @Model.Nombre </h2> *@
+
+<h1>@ViewData["Title"]</h1>
+
+<section>
+  <div class="alert alert-danger" role="alert">
+    <strong>Desea Eliminar la Asignatura @Model.Id - @Model.Nombre</strong>
+  </div>
+  <form method="post">
+     <button type="submit" class="btn btn-primary" asp-controller="Asignatura" asp-action="Delete" asp-route-id="@Model.Id">Eliminar</button>
+  </form>
+  
+</section>
+

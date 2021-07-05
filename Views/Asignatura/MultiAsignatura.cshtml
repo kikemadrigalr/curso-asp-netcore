@@ -11,26 +11,51 @@
 
 <h1>@ViewData["Title"]</h1>
 
-<table class="table table-striped table-hover">
+<section>
+  <div class="row justify-content-end">
+    <div class="col-2 add">
+      <a class="btn btn-primary"  asp-controller="Asignatura" asp-action="Create">Agregar Asignatura</a>
+    </div>
+  </div>
+
+  <div class="info">
+    <table class="table table-striped table-hover">
   <thead>
     <tr>
-      <th scope="col">#</th>
       <th scope="col">Nombre</th>
       <th scope="col">Unique ID</th>
+      <th scope="col">Curso</th>
+          <th scope="col">Acciones</th>
     </tr>
   </thead>
   <tbody>
+    @foreach (var asignatura in Model)
+        {
+          <tr>
+            <td>@asignatura.Nombre</td>
+            <td>@asignatura.Id</td>
+            <td>@asignatura.CursoNombre</td>
+            <td>
+              <a class="btn btn-warning" href="~/Asignatura/@asignatura.Id">Detalles</a>
+              <a class="btn btn-success"  href="~/Asignatura/Update/@asignatura.Id">Editar</a>
+              <a class="btn btn-danger"  href="~/Asignatura/Delete/@asignatura.Id">Eliminar</a>
+            </td>
+          </tr>
+        }
       @* partial es un taghelper de netcore
       que permite llamar y renderiazar vistas parciales
       asignndole la vista a mostrar y especificar un modelo de ser nesesario
       si no se pasa dicho modelo ella entiende que va a trabajar 
       con el modelo de la vista que la invocò *@
 
-      @foreach (var asignatura in Model)
+      @* @foreach (var asignatura in Model)
       { 
         <partial name="ObjetoEscuelaSimple" model="asignatura"/>
-      }
+      } *@
 
   </tbody>
 </table>
+
+  </div>
+</section>
 

@@ -58,7 +58,7 @@ namespace curso_asp_netcore.Controllers
         [HttpPost]
         public IActionResult Create(Alumno alumno)
         {
-            // alumno.CursoId = alumno.CursoId.ToString();
+            alumno.CursoId = alumno.CursoId.ToString();
             if(ModelState.IsValid)
             {
                 Console.WriteLine(alumno.CursoId);

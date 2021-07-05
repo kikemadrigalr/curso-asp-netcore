@@ -12,21 +12,41 @@
 
 <h1>@ViewData["Title"]</h1>
 
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Nombre</th>
-      <th scope="col">Unique ID</th>
-    </tr>
-  </thead>
-  <tbody>
-      @* partial es un taghelper de netcore
-      que permite llamar y renderiazar vistas parciales
-      asignndole la vista a mostrar y especificar un modelo de ser nesesario
-      si no se pasa dicho modelo ella entiende que va a trabajar 
-      con el modelo de la vista que la invocò *@
-      <partial name="ObjetoEscuelaSimple"/>
-  </tbody>
-</table>
+@{
+  if(@ViewBag.Mensaje != null)
+  {
+    <div class="alert alert-success" role="alert">
+      <strong>@ViewBag.Mensaje</strong>
+    </div>
+  }
+}
+
+@{
+  if(@ViewBag.MensajeError != null)
+  {
+    <div class="alert alert-danger" role="alert">
+      <strong>@ViewBag.MensajeError</strong>
+    </div>
+  }
+}
+<section>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Unique ID</th>
+      </tr>
+    </thead>
+    <tbody>
+        @* partial es un taghelper de netcore
+        que permite llamar y renderiazar vistas parciales
+        asignndole la vista a mostrar y especificar un modelo de ser nesesario
+        si no se pasa dicho modelo ella entiende que va a trabajar 
+        con el modelo de la vista que la invocò *@
+        <partial name="ObjetoEscuelaSimple"/>
+    </tbody>
+  </table>
+</section>
+
 

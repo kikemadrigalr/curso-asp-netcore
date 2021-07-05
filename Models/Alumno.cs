@@ -10,6 +10,7 @@ namespace curso_asp_netcore.Models
         [Required(ErrorMessage="El Nombre del Alumno es Requerido")]
         public override string Nombre { get; set; }
 
+        [Required(ErrorMessage=" El¨Curso es Requerido")]
         public string CursoId { get; set; }
 
         public string CursoNombre { get; set; }
